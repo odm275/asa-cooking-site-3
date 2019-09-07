@@ -52,29 +52,9 @@ collections:
               default: "services-page",
             }
           - {
-              label: Service1,
-              name: service1,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
-                ],
-            }
-          - {
-              label: Service2,
-              name: service2,
-              widget: object,
-              fields:
-                [
-                  { label: Title, name: title, widget: string },
-                  { label: Description, name: description, widget: text },
-                ],
-            }
-          - {
-              label: Service3,
-              name: service3,
-              widget: object,
+              label: Service,
+              name: service,
+              widget: list,
               fields:
                 [
                   { label: Title, name: title, widget: string },
@@ -92,11 +72,11 @@ collections:
               default: "gallery-page",
             }
           - {
-              label: galleryImages,
+              label: Gallery Images,
               name: gallery,
-              widget: object,
+              widget: list,
               fields:
                 [
-                 { label: logo, name: logo, widget: image }
+                 { label: galleryimage, name: Gallery Image, widget: image }
                 ],
           }
