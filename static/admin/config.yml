@@ -1,0 +1,43 @@
+backend:
+  name: github
+  repo: odm275/asa-cooking-site-3
+media_folder: static/assets
+public_folder: assets
+collections:
+  - name: "pages"
+    label: "Pages"
+    create: true
+    files:
+      - file: "src/pages/index.md"
+        label: "Landing Page"
+        name: "index"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "index-page",
+            }
+          - { label: Title, name: title, widget: string }
+          - { label: logo, name: logo, widget: image }
+          - { label: Heading, name: heading, widget: string }
+          - {
+              label: Mainpitch,
+              name: mainpitch,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
+          - {
+              label: Aboutme,
+              name: aboutme,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
