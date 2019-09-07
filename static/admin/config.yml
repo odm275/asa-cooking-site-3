@@ -41,3 +41,62 @@ collections:
                   { label: Description, name: description, widget: text },
                 ],
             }
+      - file: "src/pages/services.md"
+        label: "Services Page"
+        name: "services"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "services-page",
+            }
+          - {
+              label: Service1,
+              name: service1,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
+          - {
+              label: Service2,
+              name: service2,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
+          - {
+              label: Service3,
+              name: service3,
+              widget: object,
+              fields:
+                [
+                  { label: Title, name: title, widget: string },
+                  { label: Description, name: description, widget: text },
+                ],
+            }
+      - file: "src/pages/gallery.md"
+        label: "Gallery Page"
+        name: "gallery"
+        fields:
+          - {
+              label: "Template Key",
+              name: "templateKey",
+              widget: "hidden",
+              default: "gallery-page",
+            }
+          - {
+              label: galleryImages,
+              name: gallery,
+              widget: object,
+              fields:
+                [
+                 { label: logo, name: logo, widget: image }
+                ],
+          }
