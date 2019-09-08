@@ -26,12 +26,12 @@ interface ServicePageProps {
   data: object
 }
 
-const ServicePage: React.FC<ServicePageProps> = ({ data = {} }) => {
-  console.log(data)
-  const { frontmatter } = data.markdownRemark
+const ServicePage: React.FC<ServicePageProps> = props => {
+  // console.log(data)
+  // const { frontmatter } = data.markdownRemark
   return (
     <Layout>
-      <IndexPageTemplate services={frontmatter.heading} />
+      <ServicePageTemplate services={frontmatter.heading} />
     </Layout>
   )
 }

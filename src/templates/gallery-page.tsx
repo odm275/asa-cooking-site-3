@@ -1,22 +1,17 @@
 import React from "react"
 import Layout from "../components/layout"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
-interface Image {
-  path: string
-}
-
-interface PropsGalleryPageTemplate {
-  gallery?: [Image]
-}
-
-export const IndexPageTemplate: React.FC<PropsGalleryPageTemplate> = props => {
-  console.log(props)
+export const GalleryPageTemplate = ({ gallery }: any) => {
+  console.log(gallery)
   return (
-    <>
-      <h2>Main Pitch</h2>
-      <p>Here is the main pitch</p>
-    </>
+    <div>
+      <h1>lesggo</h1>
+      {gallery.map(({ galleryImage }: any) => (
+        <Img fixed={galleryImage.childImageSharp.fixed} />
+      ))}
+    </div>
   )
 }
 
@@ -24,28 +19,27 @@ interface GalleryPageProps {
   data?: object
 }
 
-const IndexPage: React.FC<GalleryPageProps> = ({ data = {} }) => {
+const GalleryPage: React.FC<GalleryPageProps> = ({ data }) => {
   const { frontmatter } = data.markdownRemark
   console.log(frontmatter)
   return (
     <Layout>
-      <IndexPageTemplate gallery={frontmatter.gallery} />
+      <GalleryPageTemplate gallery={frontmatter.gallery} />
     </Layout>
   )
 }
 
-export default IndexPage
+export default GalleryPage
 
 export const pageQuery = graphql`
   query GalleryPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "gallery-page" } }) {
       frontmatter {
-        path
         gallery {
           galleryImage {
             childImageSharp {
-              fluid(maxWidth: 600, quality: 64) {
-                ...GatsbyImageSharpFluid
+              fixed(width: 300, height: 300) {
+                ...GatsbyImageSharpFixed
               }
             }
           }

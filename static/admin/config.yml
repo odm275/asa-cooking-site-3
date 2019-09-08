@@ -2,7 +2,7 @@ backend:
   name: github
   repo: odm275/asa-cooking-site-3
 media_folder: static/assets
-public_folder: assets
+public_folder: /assets
 collections:
   - name: "pages"
     label: "Pages"
