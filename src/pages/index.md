@@ -1,4 +1,5 @@
 ---
+templateKey: index-page
 title: My Site
 logo: /assets/chefhat.png
 heading: Cooking boyzzzzzz
@@ -9,4 +10,3 @@ aboutme:
   description: A little about myself and what it has to do with my service and cooking.
   title: About me
 ---
-
