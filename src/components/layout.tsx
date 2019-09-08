@@ -1,18 +1,10 @@
-import React from "react"
-import styled from "@emotion/styled"
-import { useStaticQuery, graphql } from "gatsby"
+/** @jsx jsx */
+import { jsx, Layout as DefaultLayout, Main, Container } from "theme-ui"
 import Header from "./header"
-import Footer from './footer'
-import "./layout.css"
+import Footer from "./footer"
+import { useStaticQuery, graphql } from "gatsby"
 
-const Container = styled.div`
-    margin: 0 auto;
-    max-width: 960px;
-    padding: 0px 1.0875rem 1.45rem;
-    padding-top: 0;
-`
-
-interface Props{
+interface Props {
   children?: any
 }
 
@@ -28,11 +20,13 @@ const Layout = ({ children }: Props) => {
   `)
 
   return (
-    <Container>
-      <Header logo={'https://cdn1.iconfinder.com/data/icons/linerix-1-1/41/chef-hat-02-512.png'}/>
-        <main>{children}</main>
-        <Footer/>
-    </Container>
+    <DefaultLayout>
+      <Container>
+        <Header />
+        <Main>{children}</Main>
+        <Footer />
+      </Container>
+    </DefaultLayout>
   )
 }
 

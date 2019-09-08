@@ -1,33 +1,82 @@
-import React from "react"
+import React, { useState } from "react"
+import { jsx } from "theme-ui"
+import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core"
+import Img from "gatsby-image"
+import _ from "lodash"
 
-const Nav = styled.nav`
- display:flex;
- justify-content: space-between;
-`
+/** @jsx jsx */
 
-const Logo = styled.img`
-  width:50px;
-  height:50px;
-  margin:0;
-  padding:0;
-`
-
-// Type of props going into this component
-interface Props {
-  logo: string
+const nav = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }
 
-const Header: React.FC<Props> = ({logo}) => (
-  <Nav>
-    <Link to="/"><Logo src={logo}/></Link>
-    <Link to="/">Home</Link>
-    <Link to="/services">Services</Link>
-    <Link to="/gallery">Gallery</Link>
-  </Nav>
-)
+const activeItem = {
+  backgroundColor: "primary",
+  color: "white",
+  borderRadius: "5px",
+}
+
+const navItem = {
+  backgroundColor: "background",
+  color: "secondary",
+  px: 2,
+  py: 2,
+  textDecoration: "none",
+  ":hover": activeItem,
+}
+
+const Header = () => {
+  const {
+    markdownRemark: {
+      frontmatter: { logo },
+    },
+  } = useStaticQuery(graphql`
+    query SiteLogo {
+      markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+        frontmatter {
+          logo {
+            childImageSharp {
+              fixed(width: 50) {
+                ...GatsbyImageSharpFixed
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+  const [setActiveItem, activeItem] = useState(true)
+  const items = [
+    { description: "Home", to: "/" },
+    { description: "Services", to: "/services" },
+    { description: "Gallery", to: "/gallery" },
+  ]
+  return (
+    <nav sx={nav}>
+      <Link to="/">
+        <Img
+          fixed={logo.childImageSharp.fixed}
+          sx={{
+            width: 50,
+            height: 50,
+            margin: 0,
+            padding: 0,
+          }}
+        />
+      </Link>
+      {items.map((item, i) => (
+        <Link key={`${item.description.toLowerCase()}-${i}`}>
+          {item.description}
+        </Link>
+      ))}
+      <a sx={navItem} href="#">
+        asa@email.com
+      </a>
+    </nav>
+  )
+}
 
 export default Header
