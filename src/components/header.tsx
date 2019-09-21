@@ -1,11 +1,10 @@
-import React, { useState } from "react"
+/** @jsx jsx */
+import React from "react"
 import { jsx } from "theme-ui"
 import { useStaticQuery, graphql } from "gatsby"
 import { Link } from "gatsby"
 import Img from "gatsby-image"
 import _ from "lodash"
-
-/** @jsx jsx */
 
 const nav = {
   display: "flex",
@@ -13,7 +12,7 @@ const nav = {
   alignItems: "center",
 }
 
-const activeItem = {
+const activeNavItemStyles = {
   backgroundColor: "primary",
   color: "white",
   borderRadius: "5px",
@@ -25,7 +24,8 @@ const navItem = {
   px: 2,
   py: 2,
   textDecoration: "none",
-  ":hover": activeItem,
+  ":hover": activeNavItemStyles,
+  "&.active": activeNavItemStyles,
 }
 
 const Header = () => {
@@ -48,11 +48,10 @@ const Header = () => {
       }
     }
   `)
-  const [setActiveItem, activeItem] = useState(true)
   const items = [
-    { description: "Home", to: "/" },
-    { description: "Services", to: "/services" },
-    { description: "Gallery", to: "/gallery" },
+    { description: "Home", to: "" },
+    { description: "Services", to: "services" },
+    { description: "Gallery", to: "gallery" },
   ]
   return (
     <nav sx={nav}>
@@ -67,9 +66,14 @@ const Header = () => {
           }}
         />
       </Link>
-      {items.map((item, i) => (
-        <Link key={`${item.description.toLowerCase()}-${i}`}>
-          {item.description}
+      {items.map(({ to, description }, i) => (
+        <Link
+          key={`${description.toLowerCase()}-${i}`}
+          to={`/${to}`}
+          sx={navItem}
+          activeClassName="active"
+        >
+          {description}
         </Link>
       ))}
       <a sx={navItem} href="#">

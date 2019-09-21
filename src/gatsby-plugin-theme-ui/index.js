@@ -31,4 +31,5 @@ export default {
       backgroundColor: "black",
     },
   },
+  styles: {},
 }
