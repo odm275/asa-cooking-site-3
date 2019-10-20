@@ -13,5 +13,8 @@ gallery:
   - description: 'yes'
     galleryImage: /assets/beef-bourgignon-image-recipe-5.jpg
     title: 'More good stuff, Vegan power'
+  - description: fsadfsdfsdf
+    galleryImage: /assets/x4kej44gxhm.jpg
+    title: fsadfsdf
 ---
 
