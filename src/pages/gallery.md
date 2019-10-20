@@ -16,5 +16,11 @@ gallery:
   - description: fsadfsdfsdf
     galleryImage: /assets/x4kej44gxhm.jpg
     title: fsadfsdf
+  - description: dfasdfasdf
+    galleryImage: /assets/5m5dtbissq8.jpg
+    title: fsdfasdf
+  - description: fsadfsadfsadf
+    galleryImage: /assets/ayqg4sjwtys.jpg
+    title: fsdfasdfsad
 ---
 
