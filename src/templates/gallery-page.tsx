@@ -17,10 +17,17 @@ const imagesLoadedOptions = { background: ".my-bg-image-el" }
 export function GalleryPageTemplate({ gallery }: any) {
   console.log("gallery:", gallery)
   const childElements = gallery.map(({ galleryImage }: any) => (
-    <div>
-      <p>{galleryImage.title}</p>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <p>Title</p>
       <Img fixed={galleryImage.childImageSharp.fixed} />
-      <p>{galleryImage.description}</p>
+      <p style={{ width: 200 }}>{galleryImage.description}</p>
     </div>
   ))
   return (
@@ -56,7 +63,7 @@ export const pageQuery = graphql`
         gallery {
           galleryImage {
             childImageSharp {
-              fixed(width: 320, height: 320) {
+              fixed(width: 200, height: 200) {
                 ...GatsbyImageSharpFixed
               }
             }
