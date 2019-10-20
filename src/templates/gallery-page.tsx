@@ -3,15 +3,32 @@ import Layout from "../components/layout"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "@emotion/styled"
+import Masonry from "react-masonry-component"
 
-export const GalleryPageTemplate = ({ gallery }: any) => {
+const masonryOptions = {
+  transitionDuration: 0,
+}
+const style = {
+  backgroundColor: "tomato",
+}
+
+const imagesLoadedOptions = { background: ".my-bg-image-el" }
+
+export function GalleryPageTemplate({ gallery }: any) {
   console.log(gallery)
+  const childElements = gallery.map(({ galleryImage }: any) => (
+    <div>
+      <p>{galleryImage.title}</p>
+      <Img fixed={galleryImage.childImageSharp.fixed} />
+      <p>{galleryImage.description}</p>
+    </div>
+  ))
   return (
     <div>
       <h1>lesggo</h1>
-      {gallery.map(({ galleryImage }: any) => (
-        <Img fixed={galleryImage.childImageSharp.fixed} />
-      ))}
+      <Masonry style={style} options={masonryOptions}>
+        {childElements}
+      </Masonry>
     </div>
   )
 }
@@ -39,7 +56,7 @@ export const pageQuery = graphql`
         gallery {
           galleryImage {
             childImageSharp {
-              fixed(width: 300, height: 300) {
+              fixed(width: 320, height: 320) {
                 ...GatsbyImageSharpFixed
               }
             }

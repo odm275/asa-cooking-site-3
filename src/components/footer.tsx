@@ -1,11 +1,13 @@
-import React from 'react';
+import React from "react"
 
-const Footer = () => (
+function Footer() {
+  return (
     <footer>
-    © {new Date().getFullYear()}, Built by
-    {` `}
-    <a href="https://www.oscarmejia.me/">Oscar M.</a>
-  </footer>
-)
+      © {new Date().getFullYear()}, Built by
+      {` `}
+      <a href="https://www.oscarmejia.me/">Oscar M.</a>
+    </footer>
+  )
+}
 
-export default Footer;
+export default Footer

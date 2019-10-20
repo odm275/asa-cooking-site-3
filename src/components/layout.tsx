@@ -8,7 +8,7 @@ interface Props {
   children?: any
 }
 
-const Layout = ({ children }: Props) => {
+function Layout({ children }: Props) {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {

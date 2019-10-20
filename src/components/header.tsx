@@ -28,7 +28,7 @@ const navItem = {
   "&.active": activeNavItemStyles,
 }
 
-const Header = () => {
+function Header() {
   const {
     markdownRemark: {
       frontmatter: { logo },

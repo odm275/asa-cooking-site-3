@@ -77,6 +77,8 @@ collections:
               widget: list,
               fields:
                 [
-                 { label: Gallery Image, name: galleryImage, widget: image }
+                  { label: Title, name: title, widget: string },
+                  { label: Gallery Image, name: galleryImage, widget: image },
+                  { label: Description, name: description, widget: text }
                 ],
           }
