@@ -1,4 +1,7 @@
+/** @jsx jsx */
+
 import React from "react"
+import { jsx } from "theme-ui"
 import Layout from "../components/layout"
 import { Link, graphql } from "gatsby"
 import Img from "gatsby-image"
@@ -8,34 +11,47 @@ import Masonry from "react-masonry-component"
 const masonryOptions = {
   transitionDuration: 0,
 }
-const style = {
+
+const dummyTest = [
+  "Cake wafer cupcake. Pastry fruitcake ice cream muffin chupa chups apple pie carrot cake. Wafer bonbon chupa chups cake ice cream gingerbread.",
+  "Sesame snaps chocolate cake cake. Macaroon chupa chups dessert sweet roll. Marshmallow gummi bears candy.Sesame snaps chocolate cake cake. Macaroon chupa chups dessert sweet roll. Marshmallow gummi bears candy.",
+  "Sesame snaps chocolate cake cake. Macaroon chupa chups dessert sweet roll. Marshmallow gummi bears candy.Sesame snaps chocolate cake cake. Macaroon chupa chups dessert sweet roll.",
+  "test",
+]
+
+const hoverCard = {
   backgroundColor: "tomato",
+  color: "white",
 }
 
-const imagesLoadedOptions = { background: ".my-bg-image-el" }
+const cardStyles = {
+  borderRadius: "10px",
+  margin: "4px",
+  border: "solid black 3px",
+  width: "calc(-14px + calc(100%/3))",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+  ":hover": hoverCard,
+}
 
 export function GalleryPageTemplate({ gallery }: any) {
   console.log("gallery:", gallery)
-  const childElements = gallery.map(({ galleryImage }: any) => (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+  const childElements = gallery.map((galleryItem: any, i) => (
+    <div sx={cardStyles}>
       <p>Title</p>
-      <Img fixed={galleryImage.childImageSharp.fixed} />
-      <p style={{ width: 200 }}>{galleryImage.description}</p>
+      <Img
+        style={{ borderRadius: "10px" }}
+        fixed={galleryItem.galleryImage.childImageSharp.fixed}
+      />
+      <p style={{ padding: 5 }}>{dummyTest[i]}</p>
     </div>
   ))
   return (
     <div>
       <h1>lesggo</h1>
-      <Masonry style={style} options={masonryOptions}>
-        {childElements}
-      </Masonry>
+      <Masonry>{childElements}</Masonry>
     </div>
   )
 }
@@ -63,7 +79,7 @@ export const pageQuery = graphql`
         gallery {
           galleryImage {
             childImageSharp {
-              fixed(width: 200, height: 200) {
+              fixed(width: 250) {
                 ...GatsbyImageSharpFixed
               }
             }

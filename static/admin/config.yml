@@ -79,6 +79,6 @@ collections:
                 [
                   { label: Title, name: title, widget: string },
                   { label: Gallery Image, name: galleryImage, widget: image },
-                  { label: Description, name: description, widget: text }
+                  { label: Description, name: description, widget: text },
                 ],
           }
