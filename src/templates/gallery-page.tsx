@@ -15,7 +15,7 @@ const style = {
 const imagesLoadedOptions = { background: ".my-bg-image-el" }
 
 export function GalleryPageTemplate({ gallery }: any) {
-  console.log(gallery)
+  console.log("gallery:", gallery)
   const childElements = gallery.map(({ galleryImage }: any) => (
     <div>
       <p>{galleryImage.title}</p>
