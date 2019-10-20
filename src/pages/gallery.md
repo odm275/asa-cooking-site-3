@@ -1,7 +1,7 @@
 ---
 templateKey: gallery-page
 gallery:
-  - description: Healthy AF and tasty
+  - description: Healthy AF and Tasty
     galleryImage: /assets/beef-bourgignon-image-recipe-17.jpg
     title: Curry with Veggies
   - description: Look at that flavor. A+
